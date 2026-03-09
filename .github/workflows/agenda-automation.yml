@@ -6,7 +6,6 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     env:
@@ -24,11 +23,13 @@ jobs:
           java-version: "17"
           cache: maven
 
-      - name: Mostrar mensaje de inicio
+      - name: Mostrar mensaje
         run: echo "Iniciando pruebas de la agenda de $USER_NAME"
 
       - name: Compilar proyecto
-        run: javac Agenda.java AgendaTest.java
+        run: mvn -B clean compile
+        working-directory: practica
 
       - name: Ejecutar pruebas
-        run: java AgendaTest
+        run: mvn test
+        working-directory: practica
