@@ -1,0 +1,34 @@
+name: Agenda CI
+
+on:
+  push:
+    branches: ["main"]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    env:
+      USER_NAME: "Carlos_Miranda_Becerra"
+
+    steps:
+
+      - name: Clonar repositorio
+        uses: actions/checkout@v4
+
+      - name: Configurar JDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+          cache: maven
+
+      - name: Mostrar mensaje de inicio
+        run: echo "Iniciando pruebas de la agenda de $USER_NAME"
+
+      - name: Compilar proyecto
+        run: mvn -B clean compile
+
+      - name: Ejecutar pruebas
+        run: mvn test
