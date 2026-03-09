@@ -28,7 +28,10 @@ jobs:
         run: echo "Iniciando pruebas de la agenda de $USER_NAME"
 
       - name: Compilar proyecto
-        run: mvn -B clean compile
+        run: javac Agenda.java AgendaTest.java
+
+      - name: Ejecutar pruebas
+        run: java AgendaTest
 
       - name: Ejecutar pruebas
         run: mvn test
