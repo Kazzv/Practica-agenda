@@ -32,6 +32,3 @@ jobs:
 
       - name: Ejecutar pruebas
         run: java AgendaTest
-
-      - name: Ejecutar pruebas
-        run: mvn test
